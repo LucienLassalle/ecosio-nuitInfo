@@ -1,1 +1,31 @@
 @import "variable.css";
+
+header {
+    height: 100px;
+    background-color: rgb(42, 87, 165);
+    width: 100%;
+}
+#header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    justify-content: space-between;
+    width: 100%;
+    height: 10vh;
+}
+#header > div {
+    height: 100%;
+    display: flex;
+}
+#header > div > img#menu_burger {
+    float: left;
+}
+#header > div > h1 {
+    padding-left: 50px;
+    font-size: 75px;
+    margin: 0;
+}
+#header > #login {
+    height: 80%;
+    padding-right: 30px;
+}
