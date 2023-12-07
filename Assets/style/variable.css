@@ -1,0 +1,23 @@
+:root{
+    --bold-font: "Bold", sans-serif;
+    --light-font: "Light", sans-serif;
+    --regular-font: "Regular", sans-serif;
+    --bolditalic-font: "Black italic", sans-serif;
+    --header-height: 100px;
+    --text-font: Verdana, sans-serif;
+    --black-color: rgb(0, 0, 0);
+    --darkgray-color: rgb(48, 48, 48);
+    --gray-color: rgb(120, 120, 120);
+    --cleargray-color: rgb(160, 160, 160);
+    --lightgray-color: rgb(211, 211, 211);
+    --white-color: rgb(255, 255, 255);
+    --red-color: rgb(255, 0, 0);
+    --blur-color: rgba(254, 254, 254, 0.5);
+    --fast-transition-time: 0.2s;
+    --slow-transition-time: 0.5s;
+    --black-border: 2px solid var(--black-color);
+    --red-border: 2px solid rgb(220, 0, 0);
+    --medias-static-filter: grayscale(40%) drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.55));
+    --medias-hover-filter: grayscale(0%) drop-shadow(0px 0px 5px rgba(255, 253, 253, 0.527));
+    --slider-hover-filter: grayscale(75%) drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.55));
+}
