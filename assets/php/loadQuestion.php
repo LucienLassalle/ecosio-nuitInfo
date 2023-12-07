@@ -25,9 +25,9 @@ if ($result->num_rows > 0) {
             array_push($answers, $answer["answerLabel"]);
         }
     }
-
-    $output = $questionText + $answers + $questionAnswer;
-    echo $output.stringify($output);
+    $output = stringify($answers);
+    $output = $questionText . "---" . $output . $questionAnswer;
+    echo $output;
 } else {
     echo "Erreur lors du chargement de la question.";
 }
@@ -35,7 +35,7 @@ if ($result->num_rows > 0) {
 function stringify($array) {
     $output = "";
     foreach ($array as $value) {
-        $output += $value;
+        $output .= $value . "---";
     }
     return $output;
 }
