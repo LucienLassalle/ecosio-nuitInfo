@@ -62,7 +62,7 @@
     text-align: center;
 }
 #footer > div#footer-div > div#rs-credits > div {
-    padding-bottom: 2.5%;
+    text-align: right;
 }
 #footer > div#footer-div > div#rs-credits > div > div#footer-credits > ul {
     padding: 0;
@@ -78,15 +78,10 @@
     margin-bottom: 1em;
     text-align: center;
 }
-
 @media screen and (max-width: 1300px){
     #footer-div{
         flex-wrap: wrap;
-        flex-direction: column;
         align-items: center;
-    }
-    #footer-div > div{
-        width: 80%;
     }
     #footer-logo-rs{
         flex-wrap: nowrap;
