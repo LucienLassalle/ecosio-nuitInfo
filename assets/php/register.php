@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         die("Erreur de connexion à la base de données: " . $conn->connect_error);
     }
 
-    $insertSQL = "INSERT INTO player (pseudo, email, motDePasse) VALUES ('$formPseudo', '$formEmail', '$formPassword')";
+    $insertSQL = "INSERT INTO player (userPseudo, userEmail, userPassword) VALUES ('$formPseudo', '$formEmail', '$formPassword')";
     if($conn->query($insertSQL)){
         echo "Inscription réussie !";
     }

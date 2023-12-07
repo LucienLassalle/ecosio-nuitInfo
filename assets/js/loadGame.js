@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Si l'utilisateur est connecté, alors on charge le jeu en PHP
     // Chaque événement JS doit être traité avec le JS
     genereJeux();
+    genereQuestion();
 });
 
 
@@ -35,7 +36,7 @@ function genereJeux() {
         divReponse.className = "divReponse";
         divReponse.id = "divReponse" + i;
         divReponse.addEventListener("click", function(){
-            console.log("click sur la réponse " + i) // TODO : Demander la réponse au PHP
+            checkReponse(i);
         });
         divReponses.appendChild(divReponse);
     }
