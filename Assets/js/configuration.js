@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     let urls = [
         { url: "./assets/html/header.html", scripts: [] }, // scripts: ["../assets/js/menu.js", "../assets/js/login.js", "../assets/js/sous-menu.js", "../assets/js/header.js"] },
+        { url: "./assets/html/index.html", scripts: [] },
         { url: "./assets/html/footer.html", scripts: [] }
     ];
 
