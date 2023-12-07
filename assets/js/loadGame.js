@@ -16,7 +16,7 @@ function genereJeux() {
 
     let explication = document.createElement("div");
     explication.id = "explication";
-    explication.innerHTML = "Les explications de la réponse seront affichées ici";
+    explication.innerHTML = "Lorsque vous aurez réussis la question, vous aurez l'explication ici pour approfondir vos connaissances";
 
     main.appendChild(explication);
     let divPrincipale = document.createElement("div");
@@ -48,9 +48,18 @@ function genereJeux() {
     let image = document.createElement("img");
     image.id = "image";
     imageDiv.appendChild(image);
+
+    let next = document.createElement("button");
+    next.id = "next";
+    next.innerHTML = "Suivant";
+    next.addEventListener("click", function(){
+        nextChallenge();
+    });
+    main.appendChild(next);
 }
 
 function genereQuestion(){
+    document.getElementById("explication").innerHTML = "Lorsque vous aurez réussis la question, vous aurez l'explication ici pour approfondir vos connaissances";
     fetch("./assets/php/loadQuestion.php")
         .then(response => response.text())
         .then(data => {
@@ -77,15 +86,28 @@ function checkReponse(reponse){
         body: reponse
     }).then(response => response.text())
     .then(data => {
-        if(data == "true"){
-            // TODO : Afficher la bonne réponse en vert
+        if(data.includes("True")){
+            document.getElementById("divReponse" + reponse).classList.add("green");
         } else {
-            // TODO : Afficher la bonne réponse en vert et la réponse de l'utilisateur en rouge
+            for(let i = 0; i < document.getElementsByClassName("divReponse").length; i++){
+                if(data == document.getElementsByClassName("divReponse")[i].innerHTML){
+                    document.getElementsByClassName("divReponse")[i].classList.add("green");
+                }
+                document.getElementById("divReponse" + reponse).classList.add("red");
+            }
         }
     })
     .catch(error => {
         console.error("Erreur de chargement du fichier :", error);
     });
     document.getElementById("explication").innerHTML = explication;
+}
+
+
+function nextChallenge(){
+    for(let i = 0; i < document.getElementsByClassName("divReponse").length; i++){
+        document.getElementsByClassName("divReponse")[i].classList.remove("red");
+        document.getElementsByClassName("divReponse")[i].classList.remove("green");
+    }
     genereQuestion();
 }
