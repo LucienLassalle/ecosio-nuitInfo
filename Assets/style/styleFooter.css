@@ -39,11 +39,6 @@
     margin-bottom: 1em;
     color: var(--red-color);
 }
-#footer-logo-abonnement{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 #footer-logo-rs {
     display: flex;
     flex-direction: row;
@@ -57,9 +52,6 @@
     aspect-ratio: 3/2;
     padding-bottom: 10px;
 }
-#footer-logo-abonnement > a > img{
-    width: 100%;
-}
 #footer a{
     text-decoration: none;
     color: var(--white-color);
@@ -68,14 +60,6 @@
     color: var(black-color);
     background-color: var(--lightgray-color);
     text-align: center;
-}
-#footerArticle {
-    width: 100%;
-}
-#footerArticle > img {
-    width: 100%;
-    object-fit: contain;
-    aspect-ratio: 3/2;
 }
 #footer > div#footer-div > div#rs-credits > div {
     padding-bottom: 2.5%;
