@@ -21,3 +21,8 @@
     --medias-hover-filter: grayscale(0%) drop-shadow(0px 0px 5px rgba(255, 253, 253, 0.527));
     --slider-hover-filter: grayscale(75%) drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.55));
 }
+
+body{
+    margin: 0;
+    padding: 0;
+}
