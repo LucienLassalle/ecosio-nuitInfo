@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     let urls = [
         { valeur: 1,  url: "./assets/html/header.html", scripts: [] }, // scripts: ["../assets/js/menu.js", "../assets/js/login.js", "../assets/js/sous-menu.js", "../assets/js/header.js"] },
+        { valeur: 1, url: "./assets/html/menu.html", scripts: [] },
         { valeur: -1, url: "./assets/html/footer.html", scripts: [] }
     ];
     for (let i = 0; i < urls.length; i++) {
@@ -19,12 +20,12 @@ function loadHtml(urls, index) {
         .then(response => response.text())
         .then(html => {
             if(valeur == 1){
-                document.getElementsByTagName("header")[0].innerHTML = html;
+                document.getElementsByTagName("header")[0].innerHTML += html;
             } else if(valeur == -1){
-                document.getElementsByTagName("footer")[0].innerHTML = html;
+                document.getElementsByTagName("footer")[0].innerHTML += html;
             }  else {
                 let div = document.createElement("div");
-                div.innerHTML = html;
+                div.innerHTML += html;
                 document.getElementsByTagName("main")[0].appendChild(div);
             }
             loadScripts(scripts)

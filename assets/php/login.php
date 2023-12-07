@@ -6,9 +6,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $formPassword = $_POST['password'];
 
     if (strpos($identifier, '@') !== false && strpos($identifier, '.') !== false) {
-        $identifierType = 'email';
+        $identifierType = 'userEmail';
     } else {
-        $identifierType = 'pseudo';
+        $identifierType = 'userPseudo';
     }
 
     $configFile = file_get_contents('../../config.json');
@@ -29,13 +29,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
-        $storedPassword = $user['motDePasse'];
+        $storedPassword = $user['userPassword'];
 
         $formPassword = hash('sha256', $formPassword);
 
         if ($formPassword == $storedPassword) {
             $_SESSION["connected"] = true;
-            $_SESSION["username"] = $user["pseudo"];
+            $_SESSION["username"] = $user["userPseudo"];
             echo $_SESSION["username"];
             exit();
         } else {
