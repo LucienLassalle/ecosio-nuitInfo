@@ -40,6 +40,8 @@
     align-items: center;
     border-radius: 5px;
     border: 1px solid black;
+    animation: 1s;
+    background-color: var(--white-color);
 }
 #divImage{
     width: 20%;
@@ -51,4 +53,14 @@
 #next{
     width: 30%;
     height: 10%;
+}
+.red{
+    border: 1px solid red;
+    animation: 1s;
+    background-color: red;
+}
+.green{
+    border: 1px solid green;
+    animation: 1s;
+    background-color: green;
 }
