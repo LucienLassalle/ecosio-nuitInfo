@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     let urls = [
         { valeur: 1,  url: "./assets/html/header.html", scripts: [] }, // scripts: ["../assets/js/menu.js", "../assets/js/login.js", "../assets/js/sous-menu.js", "../assets/js/header.js"] },
-        { valeur: 1, url: "./assets/html/menu.html", scripts: [] },
+        { valeur: 1, url: "./assets/html/menu.html", scripts: ["./assets/js/menu.js"] },
         { valeur: -1, url: "./assets/html/footer.html", scripts: [] }
     ];
     for (let i = 0; i < urls.length; i++) {

@@ -18,3 +18,17 @@
     background-color: #04AA6D;
     color: white;
 }
+
+menu{
+    position: fixed;
+    padding: 0;
+    top: 10vh;
+    margin: 0;
+    left: 0;
+    animation: 1s;
+}
+
+.hidden{
+    left: -100%;
+    animation: 1s;
+}

@@ -1,6 +1,7 @@
 var Images = ["./assets/img/banquise1"];
 var explication = "";
 var isAnswered = false;
+var questionId = -1;
 
 document.addEventListener("DOMContentLoaded", function() {
     // Demander au PHP si l'utilisateur est connecté, si ce n'est pas le cas, bloquer l'accès est demandé un enregistrement ou une connexion
@@ -76,17 +77,20 @@ function genereQuestion(){
             explication = tabValeur[4];
             let image = document.getElementById("image");
             image.src = Images[0];
+            questionId = tabValeur[5];
         })
         .catch(error => {
             console.error("Erreur de chargement du fichier :", error);
         });
 }
 function checkReponse(reponse){
+    let reponseUtilisateur = document.getElementById("divReponse" + reponse).innerHTML;
+    reponseUtilisateur = reponseUtilisateur + "---" + questionId;
     if(!isAnswered){
     isAnswered = true;
     fetch("./assets/php/checkReponse.php", {
         method: "POST",
-        body: reponse
+        body: reponseUtilisateur
     }).then(response => response.text())
     .then(data => {
         if(data.includes("True")){
