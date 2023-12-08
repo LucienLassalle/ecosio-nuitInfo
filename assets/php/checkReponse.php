@@ -7,11 +7,14 @@ if ($conn->connect_error) {
     die('Connexion échouée : ' . $conn->connect_error);
 }
 
-$answerIdUser = file_get_contents("php://input");
+$answerUser = file_get_contents("php://input");
+$questionId = explode("---",$answerUser)[1];
+$answerUser = explode("---",$answerUser)[0];
 
-$query = "SELECT * FROM answer WHERE answerId = ? LIMIT 1";
+$query = "SELECT * FROM answer WHERE questionId = ? AND answerLabel = ? LIMIT 1";
+
 $stmt = $conn->prepare($query);
-$stmt->bind_param("s", $answerIdUser);
+$stmt->bind_param("ss", $questionId, $answerUser);
 $stmt->execute();
 $result = $stmt->get_result();
 if ($result->num_rows > 0) {
@@ -21,7 +24,7 @@ if ($result->num_rows > 0) {
     } else {
         $SQL = "SELECT * FROM answer WHERE questionId = ? AND answerBinary = 1";
         $stmt = $conn->prepare($SQL);
-        $stmt->bind_param("s", $answerUnique["questionId"]);
+        $stmt->bind_param("s", $questionId);
         $stmt->execute();
         $result = $stmt->get_result();
         if ($result->num_rows > 0) {
