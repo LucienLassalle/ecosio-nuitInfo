@@ -1,0 +1,36 @@
+<div id="connexion">
+    <h1>Connexion</h1>
+    <aside>
+        <form action="./assets/php/login.php" method="post">
+            <div>
+                <label for="login">Login (Email ou pseudo)</label>
+                <input type="text" name="login" id="login" required>
+            </div>
+            <div>
+                <label for="mdp">Mot de passe</label>
+                <input type="password" name="mdp" id="mdp" required>
+            </div>
+            <div>
+                <input type="submit" value="Se connecter">
+            </div>
+        </form>
+    </aside>
+    <h1>inscription</h1>
+    <aside>
+        <form action="./assets/php/register.php" method="post">
+            <div>
+                <label for="login">Pseudo</label>
+                <input type="text" name="PseudoInscription" id="PseudoInscription" required>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="emailInscription" id="emailInscription" required>
+            </div>
+            <div>
+                <label for="mdp">Mot de passe</label>
+                <input type="password" name="mdpInscription" id="mdpInscription" required>
+            </div>
+            <div>
+                <input type="submit" value="S'inscrire">
+            </div>
+    </aside>
+</div>

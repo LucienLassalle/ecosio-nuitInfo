@@ -36,3 +36,9 @@ header {
     height: 70%;
     margin-right: 2%;
 }
+#sous-header > div > a {
+    color: var(--black-color);
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+}

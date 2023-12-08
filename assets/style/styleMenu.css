@@ -32,3 +32,33 @@ menu{
     left: -100%;
     animation: 1s;
 }
+
+
+
+#connexion{
+    position: fixed;
+    top: 15vh;
+    padding: 2%;
+    margin: 0;
+    animation: 1s;
+    background-color: gray;
+    border: 1px solid black;
+    border-radius: 5%;
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+#connexion > aside {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+#connexion > aside > form > div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}

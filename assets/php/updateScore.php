@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION["username"])) {
+if (!$_SESSION["connected"]) {
     echo "Utilisateur non connecté.";
     exit();
 }
@@ -13,11 +13,14 @@ if ($conn->connect_error) {
 
 $score = file_get_contents("php://input");
 
-$sql = 'UPDATE player SET userScore = userScore + ? WHERE userId = ?';
+$sql = "UPDATE scoreboard SET userScore = userScore + ? WHERE userId = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ss", $score, $_SESSION["userId"]);
+if(!$stmt){
+    echo "Erreur lors de la préparation de la requête.";
+    exit();
+}
+$stmt->bind_param("ss", $score, $_SESSION["username"]);
 $stmt->execute();
 $stmt->close();
 $conn->close();
-echo "Score mis à jour.";
 ?>

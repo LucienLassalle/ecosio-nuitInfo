@@ -2,8 +2,8 @@
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $identifier = $_POST['identifier'];
-    $formPassword = $_POST['password'];
+    $identifier = $_POST['login'];
+    $formPassword = $_POST['mdp'];
 
     if (strpos($identifier, '@') !== false && strpos($identifier, '.') !== false) {
         $identifierType = 'userEmail';
@@ -35,8 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if ($formPassword == $storedPassword) {
             $_SESSION["connected"] = true;
-            $_SESSION["username"] = $user["userPseudo"];
-            echo $_SESSION["username"];
+            $_SESSION["username"] = $user["userId"];
+            header("Location: ../../jeux");
             exit();
         } else {
             echo "Mot de passe ou/et pseudonyme/adresse e-mail incorrecte.";

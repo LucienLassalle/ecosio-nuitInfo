@@ -1,7 +1,8 @@
-var Images = ["./assets/img/banquise1"];
+var Images = ["./assets/logo/banquise1.jpg","./assets/logo/banquise2.jpg","./assets/logo/banquise3.jpg","./assets/logo/banquise4.jpg","./assets/logo/banquise5.jpg"];
 var explication = "";
 var isAnswered = false;
 var questionId = -1;
+var indexImage = 0;
 
 document.addEventListener("DOMContentLoaded", function() {
     // Demander au PHP si l'utilisateur est connecté, si ce n'est pas le cas, bloquer l'accès est demandé un enregistrement ou une connexion
@@ -18,7 +19,7 @@ function genereJeux() {
 
     let explication = document.createElement("div");
     explication.id = "explication";
-    explication.innerHTML = "Lorsque vous aurez réussis la question, vous aurez l'explication ici pour approfondir vos connaissances";
+    explication.innerHTML = "Lorsque vous aurez répondu à la question, vous aurez l'explication ici pour approfondir vos connaissances";
 
     main.appendChild(explication);
     let divPrincipale = document.createElement("div");
@@ -50,6 +51,7 @@ function genereJeux() {
     let image = document.createElement("img");
     image.id = "image";
     imageDiv.appendChild(image);
+    image.src = Images[indexImage];
 
     let next = document.createElement("button");
     next.id = "next";
@@ -61,7 +63,7 @@ function genereJeux() {
 }
 
 function genereQuestion(){
-    document.getElementById("explication").innerHTML = "Lorsque vous aurez réussis la question, vous aurez l'explication ici pour approfondir vos connaissances";
+    document.getElementById("explication").innerHTML = "Lorsque vous aurez répondu à la question, vous aurez l'explication ici pour approfondir vos connaissances";
     fetch("./assets/php/loadQuestion.php")
         .then(response => response.text())
         .then(data => {
@@ -75,8 +77,6 @@ function genereQuestion(){
             let divReponse3 = document.getElementById("divReponse3");
             divReponse3.innerHTML = tabValeur[3];
             explication = tabValeur[4];
-            let image = document.getElementById("image");
-            image.src = Images[0];
             questionId = tabValeur[5];
         })
         .catch(error => {
@@ -96,6 +96,7 @@ function checkReponse(reponse){
         if(data.includes("True")){
             document.getElementById("divReponse" + reponse).classList.add("green");
             updateScore(1);
+            changementImage(1);
         } else {
             for(let i = 0; i < document.getElementsByClassName("divReponse").length; i++){
                 if(data == document.getElementsByClassName("divReponse")[i].innerHTML){
@@ -104,6 +105,7 @@ function checkReponse(reponse){
                 document.getElementById("divReponse" + reponse).classList.add("red");
             }
             updateScore(-1);
+            changementImage(-1);
         }
     })
     .catch(error => {
@@ -134,4 +136,13 @@ function updateScore(score){
     .catch(error => {
         console.error("Erreur de chargement du fichier :", error);
     });
+}
+function changementImage(valeur){
+    indexImage += -valeur;
+    if(indexImage < 0){
+        indexImage = 0;
+    } else if(indexImage > Images.length - 1){
+        indexImage = Images.length - 1;
+    }
+    document.getElementById("image").src = Images[indexImage];
 }

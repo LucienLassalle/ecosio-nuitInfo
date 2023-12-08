@@ -6,7 +6,7 @@ CREATE TABLE player (
     userId                	SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
     userEmail            	VARCHAR(320) NOT NULL,
     userPseudo            	VARCHAR(20) NOT NULL,
-    userPassword        	VARCHAR(32) NOT NULL,
+    userPassword        	VARCHAR(255) NOT NULL,
     CONSTRAINT PK_player PRIMARY KEY (userId),
     CONSTRAINT UK_userEmail UNIQUE KEY (userEmail),
     CONSTRAINT UK_userPseudo UNIQUE KEY (userPseudo)
