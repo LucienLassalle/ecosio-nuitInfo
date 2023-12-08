@@ -1,0 +1,28 @@
+#tableau{
+    margin: 0 auto;
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #333;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+#tableau > tr > th {
+    padding: 10px;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    color: #333;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+}
