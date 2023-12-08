@@ -1,3 +1,21 @@
-html {
-    background-color: blue;
+#index {
+    padding: 30px 200px 30px 200px;
+}
+#index > div > p.titre {
+    margin: 0;
+    padding-bottom: 10px;
+    font-size: 40px;
+    font-weight: bolder;
+    color: var(--blue-color);
+}
+#index > div > div {
+    padding: 20px 50px 20px 50px;
+    border-bottom: 1px solid black;
+}
+#index > div > div.contenu-important > div.texte {
+    font-size: 25px;
+    font-weight: bold;
+}
+#index > div > div.contenu > div.texte {
+    font-size: 20px;
 }
