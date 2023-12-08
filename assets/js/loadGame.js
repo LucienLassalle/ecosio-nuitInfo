@@ -1,5 +1,6 @@
 var Images = ["./assets/img/banquise1"];
 var explication = "";
+var isAnswered = false;
 
 document.addEventListener("DOMContentLoaded", function() {
     // Demander au PHP si l'utilisateur est connecté, si ce n'est pas le cas, bloquer l'accès est demandé un enregistrement ou une connexion
@@ -65,7 +66,7 @@ function genereQuestion(){
         .then(data => {
             let tabValeur = data.split("---");
             let question = document.getElementById("question");
-            question.innerHTML = tabValeur[0];
+            question.innerHTML = "La question est : " + tabValeur[0];
             let divReponse1 = document.getElementById("divReponse1");
             divReponse1.innerHTML = tabValeur[1];
             let divReponse2 = document.getElementById("divReponse2");
@@ -81,6 +82,8 @@ function genereQuestion(){
         });
 }
 function checkReponse(reponse){
+    if(!isAnswered){
+    isAnswered = true;
     fetch("./assets/php/checkReponse.php", {
         method: "POST",
         body: reponse
@@ -88,6 +91,7 @@ function checkReponse(reponse){
     .then(data => {
         if(data.includes("True")){
             document.getElementById("divReponse" + reponse).classList.add("green");
+            updateScore(1);
         } else {
             for(let i = 0; i < document.getElementsByClassName("divReponse").length; i++){
                 if(data == document.getElementsByClassName("divReponse")[i].innerHTML){
@@ -95,19 +99,35 @@ function checkReponse(reponse){
                 }
                 document.getElementById("divReponse" + reponse).classList.add("red");
             }
+            updateScore(-1);
         }
     })
     .catch(error => {
         console.error("Erreur de chargement du fichier :", error);
     });
     document.getElementById("explication").innerHTML = explication;
+    }
 }
 
 
 function nextChallenge(){
+    isAnswered = false;
     for(let i = 0; i < document.getElementsByClassName("divReponse").length; i++){
         document.getElementsByClassName("divReponse")[i].classList.remove("red");
         document.getElementsByClassName("divReponse")[i].classList.remove("green");
     }
     genereQuestion();
+}
+
+function updateScore(score){
+    fetch("./assets/php/updateScore.php", {
+        method: "POST",
+        body: score
+    }).then(response => response.text())
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.error("Erreur de chargement du fichier :", error);
+    });
 }
